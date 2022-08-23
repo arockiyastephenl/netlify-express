@@ -5,11 +5,11 @@
   "main": "./bin/www",
   "private": "true",
   "scripts": {
-    "start": "env-cmd -f .env.dev nodemon ./routes/index.js",
+    "start": "./node_modules/.bin/netlify-lambda ./routes/index.js",
     "start-dev": "env-cmd -f .env.dev nodemon ./bin/www",
     "build-dev": " env-cmd -f .env nodemon ./bin/www",
     "build-prod": " env-cmd -f .env nodemon ./bin/www",
-    "build": " env-cmd -f .env nodemon ./bin/www",
+    "build": "./node_modules/.bin/netlify-lambda ./bin/www",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
