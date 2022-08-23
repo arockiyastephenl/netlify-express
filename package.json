@@ -9,7 +9,7 @@
     "start-dev": "env-cmd -f .env.dev nodemon ./bin/www",
     "build-dev": " env-cmd -f .env nodemon ./bin/www",
     "build-prod": " env-cmd -f .env nodemon ./bin/www",
-    "build": "./node_modules/.bin/netlify-lambda serve ./routes/index.js",
+    "build": "./node_modules/.bin/netlify-lambda build ./routes/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
