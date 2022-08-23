@@ -6,9 +6,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const compression = require("compression");
 const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('./Modal/Response.json');
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const swaggerDocument = require('../Modal/Response.json');
+var indexRouter = require('../routes/index');
+var usersRouter = require('../routes/users');
 const serverless =require('serverless-http')
 var app = express();
 
