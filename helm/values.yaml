@@ -1,0 +1,65 @@
+replicaCount: 1
+environment: dev
+image:
+  pullPolicy: Always
+  name: ialuy97a.gra7.container-registry.ovh.net/colakin-dev/node-es-proxy
+  tag: latest
+
+imagePullSecrets:
+  name: ovh-registry  
+
+# Define service
+service:
+  name: node-es-proxy
+  type: ClusterIP
+  externalPort: 8080
+  internalPort: 8080
+
+# Define resources
+resources: {}
+  # limits:
+  #   memory: 1024Mi
+  # requests:
+  #   memory: 64Mi
+
+## Liveness & Readiness Probes
+livenessProbe: {}
+#  httpGet:
+#    path: /
+#    port: 8080
+#  initialDelaySeconds: 30
+#  timeoutSeconds: 5
+#  periodSeconds: 3
+readinessProbe: {}
+#  httpGet:
+#    path: /
+#    port: 8080
+#  initialDelaySeconds: 30
+#  timeoutSeconds: 5
+#  periodSeconds: 3
+restartPolicy: Always
+
+## Setup Ingress
+ingress:
+  enabled: false
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  tls:
+    enabled: true
+    secretName: clk-managed-sizecorner-tls
+    domain: "*.sizecorner.com"
+  domain: elastic-proxy.sizecorner.com
+  paths:
+    path: /
+
+horizontalautoscaling:
+  enabled: false
+  cpuUtilizationPercentage: 80
+  memoryUtilization: 512Mi
+
+nameOverride:
+fullnameOverride:
+nodeSelector: {}
+tolerations: []
+affinity: {}

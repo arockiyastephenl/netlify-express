@@ -1,0 +1,183 @@
+{
+  "info": {
+    "title": "Size Corner",
+    "version": "1.0.0",
+    "description": "Size Corner Elastic Proxy  "
+  },
+  "host": "localhost:8080",
+  "basePath": "/",
+  "produces": ["application/json"],
+  "swagger": "2.0",
+  "paths": {
+    "/getSearchResult": {
+      "post": {
+        "description": "Query Building ",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Query Build Req",
+
+            "schema": {
+              "type": "object",
+
+              "properties": {
+                "gender": {
+                  "type": "array",
+
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "platform": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "brand": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "categories": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "style": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                },
+                "color": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                },
+                "country": {
+                  "type": "string"
+                },
+                "froms": {
+                  "type": "integer"
+                },
+                "sort": {
+                  "type": "string"
+                },
+                "productUrl": {
+                  "type": "string"
+                },
+                "search": {
+                  "type": "string"
+                },
+                "shoulder": {
+                  "type": "string"
+                },
+                "bust": {
+                  "type": "string"
+                },
+                "chest": {
+                  "type": "string"
+                },
+                "topWaist": {
+                  "type": "string"
+                },
+                "bottomWaist": {
+                  "type": "string"
+                },
+                "inseam": {
+                  "type": "string"
+                },
+                "outseam": {
+                  "type": "string"
+                },
+                "hip": {
+                  "type": "string"
+                },
+                "measurementsUnit": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get search Result",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/Result"
+            }
+          },
+          "400": {
+            "description": "SERVER ERROR AT ELASTICSEARCH",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "error": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/gethealth": {
+      "get": {
+        "description": "Elastic search Health Checking",
+        "responses": {
+          "200": {
+            "description": "Success search Result",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "response": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "INTERNAL SERVER ERROR IN ELASTICSEARCH",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "response": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "definitions": {
+    "Result": {
+      "type": "object",
+      "properties": {
+        "products": {
+          "type": "object"
+        },
+        "productTotal": {
+          "type": "integer"
+        },
+        "aggergation": {
+          "type": "object"
+        }
+      }
+    }
+  }
+}
