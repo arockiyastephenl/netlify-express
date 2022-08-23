@@ -2,14 +2,11 @@
   "name": "elastic-proxy",
   "version": "1.0.0",
   "description": "",
-  "main": "./bin/www",
+  "main": "./routes/index.js",
   "private": "true",
   "scripts": {
-    "start": "env-cmd -f .env.dev nodemon ./routes/index.js",
-    "start-dev": "env-cmd -f .env.dev nodemon ./bin/www",
-    "build-dev": " env-cmd -f .env nodemon ./bin/www",
-    "build-prod": " env-cmd -f .env nodemon ./bin/www",
-    "build": "env-cmd -f .env nodemon ./bin/www",
+    "start": "node ./routes/index.js",
+
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -33,6 +30,9 @@
     "swagger-ui-express": "^4.3.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.15"
+    "express": "^4.18.1"
+  },
+  "engines": {
+    "node":"v16.16.0"
   }
 }
